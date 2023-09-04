@@ -4,37 +4,15 @@ import { EffectCreative } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/effect-creative";
-
 import "../scss/portfolioPage.scss";
 
 function PortfolioPage() {
-  const swiperParams = {
-    grabCursor: true,
-    effect: "creative",
-    creativeEffect: {
-      prev: {
-        shadow: true,
-        translate: [0, 0, -400],
-      },
-      next: {
-        translate: ["100%", 0, 0],
-      },
-    },
-    modules: [EffectCreative],
-  };
-
   const slideDescriptions = [
     {
       pfNum: "portfolio #1",
       pfName: "MBTI 테스트 사이트",
       pfDisc: "소규모프로젝트\nhtml, css, js만을 이용해 만든 MBTI테스트 사이트",
       link: "https://humnyenye.github.io/jsmbti/",
-    },
-    {
-      pfNum: "portfolio #2",
-      pfName: "스타벅스 사이트 클론코딩",
-      pfDisc: "스타벅스 사이트 클론코딩 페이지",
-      link: "https://humnyenye.github.io/starbucks/",
     },
     {
       pfNum: "portfolio #3",
@@ -58,6 +36,21 @@ function PortfolioPage() {
 
   const activeSlideDescription = slideDescriptions[activeSlideIndex];
 
+  const swiperParams = {
+    grabCursor: true,
+    effect: "creative",
+    creativeEffect: {
+      prev: {
+        shadow: true,
+        translate: [0, 0, -400],
+      },
+      next: {
+        translate: ["100%", 0, 0],
+      },
+    },
+    modules: [EffectCreative],
+  };
+
   return (
     <section id="portfolioPage">
       <div className="e">
@@ -74,19 +67,11 @@ function PortfolioPage() {
         </div>
       </div>
       <Swiper {...swiperParams} className="mySwiper" onSlideChange={handleSlideChange}>
-        <SwiperSlide>
-          <div className="imgBox" style={{ backgroundImage: 'url("./imgs/example_1.png")' }}></div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="imgBox" style={{ backgroundImage: 'url("./imgs/example_2.png")' }}></div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="imgBox" style={{ backgroundImage: 'url("./imgs/example_3.png")' }}></div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="imgBox" style={{ backgroundImage: 'url("./imgs/example_4.png")' }}></div>
-        </SwiperSlide>
-        {/* 다른 슬라이드들도 추가 */}
+        {slideDescriptions.map((slide, index) => (
+          <SwiperSlide key={index}>
+            <div className="imgBox" style={{ backgroundImage: `url("./imgs/example_${index + 1}.png")` }}></div>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </section>
   );
