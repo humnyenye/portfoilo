@@ -1,0 +1,217 @@
+::before,
+::after {
+  position: absolute;
+  content: "";
+}
+
+#portfolioPage {
+  padding: 60px 30px 0;
+  .e {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    h1 {
+      font-size: 60px;
+      font-weight: bold;
+      font-family: "Montserrat", sans-serif;
+      text-align: center;
+      color: #ffd800;
+      letter-spacing: 0px;
+      transition: 1s;
+      -webkit-transition: 1s;
+      -ms-transition: 1s;
+      position: relative;
+      padding: 10px;
+    }
+
+    h1:before,
+    h1:after {
+      content: "";
+      position: absolute;
+      height: 7px;
+      width: 0px;
+      background: #ffd800;
+      transition: 300ms;
+      -webkit-transition: 1s;
+      -ms-transition: 1s;
+      opacity: 0.3;
+      left: 50%;
+    }
+
+    h1:before {
+      bottom: 0;
+    }
+    h1:after {
+      top: 0;
+    }
+    h1:hover {
+      letter-spacing: 30px;
+    }
+    h1:hover:before,
+    h1:hover:after {
+      width: 95%;
+      opacity: 1;
+      left: 0;
+    }
+  }
+  .swiperExplain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    width: 30%;
+    height: 90%;
+    background: #405166;
+    color: #fff;
+    padding: 30px;
+    .pf {
+      &Num {
+        text-transform: uppercase;
+        margin-bottom: 15px;
+      }
+      &Name {
+        font-size: 22px;
+        font-weight: 800;
+        margin-bottom: 30px;
+      }
+      &Disc {
+        text-align: center;
+        white-space: pre-line;
+        line-height: 20px;
+        margin-bottom: 30px;
+        min-height: 100px;
+      }
+    }
+    .btn {
+      position: relative;
+      display: inline-block;
+      width: auto;
+      height: auto;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      margin: 0px 25px 15px;
+      min-width: 150px;
+
+      a {
+        position: relative;
+        display: inline-block;
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 15px 20px;
+        transition: 0.3s;
+      }
+      &.btn-4 {
+        a {
+          color: rgb(28, 31, 30);
+          background-color: rgb(245, 245, 245);
+
+          &:hover {
+            color: #000;
+          }
+        }
+      }
+      &.hover-border-10 {
+        &::before,
+        &::after {
+          width: 15%;
+          height: 2px;
+          background-color: #000;
+          z-index: 2;
+        }
+        a {
+          &::before,
+          &::after {
+            width: 0%;
+            height: 0%;
+            background: transparent;
+            opacity: 0;
+            z-index: 2;
+          }
+          &::after {
+            bottom: 0;
+            left: 0%;
+            border-bottom: 2px solid #000;
+            transition: width 0.25s ease-in, opacity 0s 0.35s;
+          }
+          &:hover::after {
+            width: 100%;
+            opacity: 1;
+            transition: width 0.25s 0.2s ease-out, opacity 0s 0.2s;
+          }
+          &::before {
+            top: 0%;
+            left: 0%;
+            border-top: 2px solid #000;
+            border-right: 2px solid #000;
+            transition: height 0.15s ease-in, width 0.2s 0.15s linear, opacity 0s 0.35s;
+          }
+          &:hover::before {
+            width: 98.5%;
+            height: 96%;
+            opacity: 1;
+            transition: width 0.2s 0.1s linear, height 0.15s 0.3s ease-out, opacity 0s 0.1s;
+          }
+        }
+        &::before,
+        &::after {
+          content: "";
+          display: block;
+          left: 0%;
+          height: 30%;
+          width: 2px;
+          transition: height 0.2s 0.35s ease-out;
+        }
+        &::before {
+          top: 50%;
+        }
+        &::after {
+          bottom: 50%;
+        }
+        &:hover::before {
+          height: 50%;
+          transition: height 0.2s ease-in;
+        }
+        &:hover::after {
+          height: 50%;
+          transition: height 0.1s ease-in;
+        }
+      }
+    }
+  }
+  .swiper {
+    width: 100%;
+    height: 90%;
+    background: linear-gradient(to right, #405166 3%, #fff);
+    &-slide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: bold;
+      color: #fff;
+      .imgBox {
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+      }
+    }
+  }
+}
+
+@keyframes stripe-slide {
+  0% {
+    background-position: 0% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
